@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>_</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #03040b;
+    color: white;
+}
+
+/* DARK ANIMATED BACKGROUND */
+
+.background {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        125deg,
+        #02030a,
+        #101026,
+        #09091c,
+        #160825,
+        #03040b
+    );
+    background-size: 400% 400%;
+    animation: bgMove 14s ease infinite;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* GLOW ORBS */
+
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.35;
+    animation: orbMove 9s ease-in-out infinite alternate;
+}
+
+.orb1 {
+    width: 280px;
+    height: 280px;
+    background: #6800ff;
+    top: -80px;
+    left: -70px;
+}
+
+.orb2 {
+    width: 250px;
+    height: 250px;
+    background: #006aff;
+    bottom: -80px;
+    right: -60px;
+    animation-delay: 2s;
+}
+
+.orb3 {
+    width: 200px;
+    height: 200px;
+    background: #ff00a8;
+    top: 40%;
+    left: 60%;
+    animation-delay: 3s;
+}
+
+@keyframes orbMove {
+    from {
+        transform: translate(0, 0) scale(0.8);
+    }
+    to {
+        transform: translate(70px, -50px) scale(1.3);
+    }
+}
+
+/* PARTICLES */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+}
+
+.particles span {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white;
+    animation: sparkle 4s ease-in-out infinite;
+}
+
+.particles span:nth-child(1) {
+    top: 15%;
+    left: 20%;
+}
+
+.particles span:nth-child(2) {
+    top: 25%;
+    left: 80%;
+    animation-delay: 1s;
+}
+
+.particles span:nth-child(3) {
+    top: 60%;
+    left: 15%;
+    animation-delay: 2s;
+}
+
+.particles span:nth-child(4) {
+    top: 80%;
+    left: 70%;
+    animation-delay: 1.5s;
+}
+
+.particles span:nth-child(5) {
+    top: 40%;
+    left: 50%;
+    animation-delay: 2.5s;
+}
+
+.particles span:nth-child(6) {
+    top: 90%;
+    left: 35%;
+    animation-delay: 0.5s;
+}
+
+.particles span:nth-child(7) {
+    top: 10%;
+    left: 60%;
+    animation-delay: 3s;
+}
+
+.particles span:nth-child(8) {
+    top: 70%;
+    left: 90%;
+    animation-delay: 1s;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.1;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(2);
+    }
+}
+
+/* FLOATING BUBBLES */
+
+.bubbles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bubbles span {
+    position: absolute;
+    bottom: -100px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    box-shadow: inset 0 0 15px rgba(255,255,255,0.06);
+    animation: bubbleUp linear infinite;
+}
+
+.bubbles span:nth-child(1) {
+    width: 70px;
+    height: 70px;
+    left: 10%;
+    animation-duration: 12s;
+}
+
+.bubbles span:nth-child(2) {
+    width: 25px;
+    height: 25px;
+    left: 30%;
+    animation-duration: 8s;
+    animation-delay: 2s;
+}
+
+.bubbles span:nth-child(3) {
+    width: 100px;
+    height: 100px;
+    left: 55%;
+    animation-duration: 16s;
+    animation-delay: 1s;
+}
+
+.bubbles span:nth-child(4) {
+    width: 45px;
+    height: 45px;
+    left: 75%;
+    animation-duration: 10s;
+    animation-delay: 3s;
+}
+
+.bubbles span:nth-child(5) {
+    width: 65px;
+    height: 65px;
+    left: 90%;
+    animation-duration: 14s;
+    animation-delay: 4s;
+}
+
+.bubbles span:nth-child(6) {
+    width: 35px;
+    height: 35px;
+    left: 42%;
+    animation-duration: 11s;
+    animation-delay: 5s;
+}
+@keyframes bubbleUp {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-50vh) translateX(40px);
+    }
+    100% {
+        transform: translateY(-120vh) translateX(-30px);
+        opacity: 0;
+    }
+}
+
+/* CENTER BUTTON */
+
+.container {
+    position: relative;
+    z-index: 5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 65px;
+}
+
+.join-btn {
+    position: relative;
+    padding: 20px 65px;
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #111;
+    text-decoration: none;
+    border-radius: 60px;
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #e8e8ff,
+        #ffffff
+    );
+    border: 1px solid white;
+
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.8),
+        0 0 35px rgba(180,150,255,0.7),
+        0 0 70px rgba(120,70,255,0.3);
+
+    animation: buttonGlow 2s infinite alternate;
+    transition: 0.3s;
+}
+
+.join-btn:hover {
+    transform: scale(1.08);
+    box-shadow:
+        0 0 25px white,
+        0 0 60px #b18cff,
+        0 0 100px #7c3cff;
+}
+
+@keyframes buttonGlow {
+    from {
+        box-shadow:
+            0 0 15px white,
+            0 0 30px #9670ff;
+    }
+    to {
+        box-shadow:
+            0 0 30px white,
+            0 0 60px #9670ff,
+            0 0 90px #6500ff;
+    }
+}
+
+/* BUTTON LIGHT RING */
+
+.join-btn::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 60px;
+    border: 1px solid rgba(255,255,255,0.4);
+    animation: ring 2s infinite;
+}
+
+@keyframes ring {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.18);
+        opacity: 0;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:480px) {
+    .join-btn {
+        padding: 18px 55px;
+        font-size: 19px;
+    }
+
+    .orb1 {
+        width: 220px;
+        height: 220px;
+    }
+
+    .orb2 {
+        width: 200px;
+        height: 200px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="bubbles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="container">
+    <a href="https://t.me/+EBFIRtec_gszOTNl"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="join-btn">
+       JOIN NOW
+    </a>
+</div>
+
+</body>
+</html>
